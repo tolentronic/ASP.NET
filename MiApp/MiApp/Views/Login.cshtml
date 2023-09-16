@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Iniciar Sesión";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<h2>Iniciar Sesión</h2>
+
+@using (Html.BeginForm("Login", "Cuenta", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.NombreUsuario, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.NombreUsuario, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.NombreUsuario)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Contraseña, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Contraseña, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Contraseña)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">Iniciar Sesión</button>
+        </div>
+    </div>
+}
